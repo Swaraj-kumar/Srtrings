@@ -1,1 +1,1 @@
-# Srtrings
+# Strings
