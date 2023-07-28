@@ -1,0 +1,49 @@
+https://leetcode.com/problems/longest-palindrome/
+
+APPROACH 1: 
+
+class Solution {
+public:
+    int longestPalindrome(string s) {
+        unordered_map<char,int>mp;
+        for(int i=0;i<s.length();i++){
+            mp[s[i]]++;
+        }
+        int sum = 0;
+        bool flag = false;
+        //storing all even length frquency in sum when odd length is encountered we deduct frequency 
+        //of that character by 1 and add it to sum
+        for(auto it: mp){
+            if(it.second%2 == 0){
+                sum += it.second; 
+            }
+            else{
+                flag = true;
+                sum += it.second-1;
+            }
+        }
+        if (flag == true)return sum+1;
+        return sum;
+    }
+};
+
+APPROACH 2:
+
+class Solution {
+public:
+    int longestPalindrome(string s) {
+        unordered_map<char, int> mp;
+        for(int i=0;i<s.size();i++){
+            mp[s[i]]++;
+        }
+        //we count elements with odd character frequency if count of odd characters become greater than 1
+        // we deduct the count from total length of string and add 1 
+        //if one add counter is only encountered than simlply return size of string
+        int count = 0;
+        for(auto it : mp){
+            if((it.second % 2) != 0) count++;
+        }
+        if(count > 1) return s.length() - count + 1;
+        return s.length();
+    }
+};
