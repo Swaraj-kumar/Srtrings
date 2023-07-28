@@ -1,0 +1,22 @@
+https://leetcode.com/problems/valid-anagram/
+
+
+class Solution {
+public:
+    //Take 2 maps and store their characters and frequency
+    //if size of both the maps are unequal then return false
+    //also if characters of both the maps are unequal return false
+    bool isAnagram(string s, string t) {
+        unordered_map<char,int>mp1,mp2;
+        for(int i=0;i<s.length();i++)mp1[s[i]]++;
+        for(int i=0;i<t.length();i++)mp2[t[i]]++;
+        
+        if(mp1.size() != mp2.size())return false;
+        
+        for(auto it: mp1){
+            if(mp1[it.first] != mp2[it.first])return false;
+        }
+        return true;
+        
+    }
+};
