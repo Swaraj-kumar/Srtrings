@@ -1,0 +1,44 @@
+https://leetcode.com/problems/reverse-words-in-a-string-iii/
+
+//APPROACH 1 using stack
+
+class Solution {
+public:
+    string reverseWords(string s) {
+        stack<char>st;
+        string str = "";
+        for(int i=0;i<s.size();i++){
+            if(s[i] != 32)st.push(s[i]);
+            else{
+                while(!st.empty()){
+                str += st.top();
+                st.pop();
+            }
+             str = str+" ";
+            }
+        }
+        //Adding the characters of last word
+        while (!st.empty()) {
+            str += st.top();
+            st.pop();
+        }
+        return str;
+    }
+};
+
+// APPROACH 2
+
+class Solution {
+public:
+    string reverseWords(string s) {
+        int i = 0;
+        for(int j=0;j<s.size();j++){
+            if(s[j] == 32){
+                reverse(s.begin() + i, s.begin() + j);
+                i = j+1;
+            }
+        }
+        reverse(s.begin()+i,s.end());
+        return s;
+    }
+};
