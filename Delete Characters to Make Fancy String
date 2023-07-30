@@ -1,0 +1,44 @@
+https://leetcode.com/problems/delete-characters-to-make-fancy-string/
+
+class Solution {
+public:
+    string makeFancyString(string s) {
+        //base case-> lenght is less than 3 that will be ans string
+        if(s.length() < 3){
+            return s;
+        }
+        string ans = "";
+        for(int i=0;i<s.length();i++){
+            if(s[i]==s[i+1] && s[i+1]==s[i+2]){
+                continue;
+            }
+            else{
+                ans+=s[i];
+            }
+        }
+        return ans;
+    }
+};
+
+/*l e e e t c o d e
+0 1 2 3 4 5 6 7 8
+    
+i=0
+if(l == e && e == e)false;
+else ans = "" + l; ->  ans  = "l";
+
+i=1
+if(e == e && e == e)continue;
+
+i=2 
+if(e == e && e == t)false;
+else ans = "l" + e;
+
+i=3
+if(e==t && t==c)false;
+else ans = "le" + e;
+
+i=4
+if(t == c && c == 0)false;
+else ans = "lee" + t;
+And so on....*/
