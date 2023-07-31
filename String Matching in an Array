@@ -1,0 +1,19 @@
+https://leetcode.com/problems/string-matching-in-an-array/
+
+class Solution {
+public:
+    // string::npos-> is usually used for invalid or not found condition it indicates -1 
+    vector<string> stringMatching(vector<string>& words) {
+        vector<string> ans;
+        for(int i = 0; i < words.size(); i++) {
+            for(int j = 0; j < words.size(); j++) {
+                if(i == j) continue;
+                if(words[j].find(words[i]) != string::npos) {
+                    ans.push_back(words[i]);
+                    break;
+                }
+            }
+        }
+        return ans;
+    }
+};
