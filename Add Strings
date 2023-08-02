@@ -1,0 +1,36 @@
+https://leetcode.com/problems/add-strings/
+
+class Solution {
+public:
+    /*ASCII val of 0 is 48 and 9 is 57 substracting char of string with 0 gives the integer val of it like '9'-'0' = 57-48 = 9 
+    sum is modded because it give last digit and sum is divided because to store carry*/    
+    string addStrings(string num1, string num2) {
+        string ans = "";
+        int sum = 0;
+        int i = num1.size()-1;
+        int j = num2.size()-1;
+        while(i>=0 && j>=0){
+            sum = sum + (num1[i] - '0') + (num2[j] - '0');
+            ans.push_back(char(sum%10) + '0');
+            sum = sum/10;
+            i--,j--;
+        }
+        while(i>=0){
+            sum = sum + (num1[i] - '0');
+            ans.push_back(char(sum%10) + '0');
+            sum = sum/10;
+            i--;
+        }
+        while(j>=0){
+            sum = sum + (num2[j] - '0');
+            ans.push_back(char(sum%10) + '0');
+            sum = sum/10;
+            j--;
+        }
+        if(sum > 0){
+            ans.push_back(char(sum%10) + '0');
+        }
+        reverse(ans.begin(),ans.end());
+        return ans;
+    }
+};
