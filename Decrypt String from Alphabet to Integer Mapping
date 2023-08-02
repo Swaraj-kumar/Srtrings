@@ -1,0 +1,28 @@
+https://leetcode.com/problems/decrypt-string-from-alphabet-to-integer-mapping/
+
+class Solution {
+public:
+    string freqAlphabets(string s) {
+       unordered_map<string, char> mp{
+            {"1", 'a'}, {"2", 'b'}, {"3", 'c'}, {"4", 'd'}, {"5", 'e'},
+            {"6", 'f'}, {"7", 'g'}, {"8", 'h'}, {"9", 'i'}, {"10#", 'j'},
+            {"11#", 'k'}, {"12#", 'l'}, {"13#", 'm'}, {"14#", 'n'}, {"15#", 'o'},
+            {"16#", 'p'}, {"17#", 'q'}, {"18#", 'r'}, {"19#", 's'}, {"20#", 't'},
+            {"21#", 'u'}, {"22#", 'v'}, {"23#", 'w'}, {"24#", 'x'}, {"25#", 'y'},{"26#", 'z'}
+        };
+        string ans = "";
+        int i = 0;
+        while(i < s.size()){
+            //for all the string with size == 2 i.e in j to z category if its having '#'
+            if(i+2 < s.size() && s[i+2] == '#'){
+                ans += mp[s.substr(i , 3)];
+                i += 3;
+            }
+            else{
+                ans += mp[s.substr(i , 1)];
+                i += 1;
+            }
+        }
+        return ans;
+    }
+};
