@@ -1,0 +1,18 @@
+https://leetcode.com/problems/rotate-string/
+
+class Solution {
+public:
+    //store first character and delete it the  push to the same string keep doing till we get 
+    //retultant output
+    bool rotateString(string s, string goal) {
+        int i=0;
+        while(i<s.size()) {
+            if(s==goal) return true ;
+            char a = s[0] ;
+            s.erase(s.begin()) ;
+            s.push_back(a) ;
+            i++;
+        }
+        return false ;
+    }
+};
