@@ -1,0 +1,30 @@
+https://leetcode.com/problems/detect-capital/
+
+class Solution {
+public:
+    bool detectCapitalUse(string word) {
+        int uppercaseCount = 0;
+        for (int i=0;i<word.size();i++) {
+            if (isupper(word[i])) {
+                uppercaseCount++;
+            }
+        }
+        
+        // Rule 1: All characters are uppercase
+        if (uppercaseCount == word.length()) {
+            return true;
+        }
+        
+        // Rule 2: All characters are lowercase
+        if (uppercaseCount == 0) {
+            return true;
+        }
+        
+        // Rule 3: Only first character is uppercase
+        if (uppercaseCount == 1 && isupper(word[0])) {
+            return true;
+        }
+        
+        return false;
+    }
+};
